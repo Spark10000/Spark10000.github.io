@@ -32,41 +32,30 @@
         <table id="myTable" >
             <tr class="header">
                <th>Name</th>
-               <th>Degree</th>
-               <th>Post</th>
+               <th>Type</th>
+               <th>Vendor</th>
             </tr>
 
                 <tr>
-                    <td>Jay</td>
-                    <td>BCA</td>
-                    <td>Widget Developer</td>
+                    <td>P1</td>
+                    <td>T1</td>
+                    <td>ServoCity</td>
                 </tr>
                 <tr>
-                    <td>Kartik</td>
-                    <td>MCA</td>
-                    <td>python Developer</td>
+                    <td>P2</td>
+                    <td>T2</td>
+                    <td>GoBuilda</td>
                 </tr>
                 <tr>
-                    <td>Abhishek</td>
-                    <td>BCS</td>
-                    <td>Full Stack Developer</td>
+                    <td>P3</td>
+                    <td>T3</td>
+                    <td>Pitsco</td>
                 </tr>
                 <tr>
-                    <td>Atul</td>
-                    <td>MCS</td>
-                    <td>PHP Developer</td>
+                    <td>P4</td>
+                    <td>T4</td>
+                    <td>REV</td>
                 </tr>
-                <tr>
-                    <td>Sagar</td>
-                    <td>B.tech</td>
-                    <td>Web Designer</td>
-                </tr>
-                <tr>
-                    <td>Umesh</td>
-                    <td>M.tech</td>
-                    <td>Web Developer</td>
-                </tr>
-
         </table>
     </section>
     <script>
@@ -78,7 +67,7 @@ const Search=()=>{
            let tr=myTable.getElementsByTagName('tr')
 
            for(i=0;i<tr.length;i++){
-               let tdName=tr[i].getElementsByTagName('td')[0];//tr[i ] gives the name while td[0] gives the name of the field
+               let tdName=tr[i].getElementsByTagName('td')[2];//tr[i ] gives the name while td[0] gives the name of the field
                if(tdName){
                    let txtvalue=tdName.textContent||td.innerHTML;//to store the value ina text
                    if(txtvalue.toUpperCase().indexOf(MyText)>-1){
