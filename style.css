@@ -6,8 +6,8 @@
 }
 body {
   display: flex;
-  justify-content: top;
-  align-items: top;
+  justify-content: left;
+  align-items: left;
   max-width:auto;
   height: auto;
   font-size: 18px;
