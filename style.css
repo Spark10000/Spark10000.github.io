@@ -1,18 +1,18 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 body {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: top;
+  align-items: top;
   max-width:auto;
-  height: 50vh;
+  height: auto;
   font-size: 18px;
 }
 table {
-  text-align: center;
+  text-align: top;
   width: 100%;
 }
 #MyText {
