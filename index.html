@@ -1,18 +1,21 @@
 <!DOCTYPE html>
   <html>
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FTC Onshape PARTS LIBRARY</title>
-    <link rel="stylesheet" href="./style.css">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>FTC Onshape PARTS LIBRARY</title>
+      <link rel="stylesheet" href="./style.css">
       <title></title>
       <style></style>
     </head>
     <body>
-      <section>
-        
-            <input type="text" name="" id="MyText" placeholder="Search..." onkeyup="Search()">
+      <button class="tablink" onclick="openPage('Library', this, 'purple')" id="defaultOpen"> Library</button>
+      <button class="tablink" onclick="openPage('Recent', this, 'purple')">Recent</button>
+      <button class="tablink" onclick="openPage('Favorites', this, 'purple')">Favorites</button>
+
+      <div id="Library" class="tabcontent">
+        <input type="text" name="" id="MyText" placeholder="Search..." onkeyup="Search()">
         <table id="myTable" >
             <tr class="header">
                <th>Part</th>
@@ -43,8 +46,34 @@
                     <td>REV</td>
                 </tr>
         </table>
-    </section>
+      </div>
+
+      <div id="Favorites" class="tabcontent">
+          <p> Here are your Favorites.</p>
+      </div>
+
+      <div id="Recent" class="tabcontent">
+        <p>fhdofhosdhf</p>
+      </div>
+
     <script>
+      
+function openPage(pageName,elmnt,color){
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent")
+  for(i=0; i < tabcontent.length; i++){
+    tabcontent[i].style.display = "none";
+  }
+
+  tablinks = document.getElementsByClassName("tablink");
+  for(i = 0; i < tablinks.length; i++){
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+document.getElementById("defaultOpen").click();
+
 const Search=()=>{
            const MyText=document.getElementById('MyText').value.toUpperCase();
 

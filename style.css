@@ -5,8 +5,8 @@
 
 }
 body {
-  display: flex;
-  justify-content: flex-start;
+  display: center;
+  justify-content: center;
   align-items: center;
   max-width:auto;
   height: auto;
@@ -26,6 +26,31 @@ table {
 tr {
   line-height: 2rem;
 }
+
+/*CSS for Tabs*/
 .header {
   background: rgb(255, 255, 255);
+}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+.tabcontent {
+  color: black;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
 }
