@@ -6,15 +6,15 @@
 }
 body {
   display: flex;
-  justify-content: left;
-  align-items: left;
+  justify-content: flex-start;
+  align-items: center;
   max-width:auto;
   height: auto;
   font-size: 18px;
   background: rgb(242, 240, 246);
 }
 table {
-  text-align: left;
+  text-align: center;
   width: 100%;
 }
 #MyText {
