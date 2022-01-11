@@ -5,14 +5,14 @@
 }
 body {
   display: flex;
-  justify-content: top;
-  align-items: top;
+  justify-content: top left;
+  align-items: top left;
   max-width:auto;
   height: auto;
   font-size: 18px;
 }
 table {
-  text-align: top;
+  text-align: top left;
   width: 100%;
 }
 #MyText {
