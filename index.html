@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Bar using JS</title>
+    <title>FTC PARTS LIBRARY</title>
     <link rel="stylesheet" href="./style.css">
       <title></title>
       <style>
@@ -28,10 +28,10 @@
     <canvas width=device-width height=1080 id="test"></canvas>
       <section>
         
-            <input type="text" name="" id="MyText" placeholder="Serch here.." onkeyup="Search()">
+            <input type="text" name="" id="MyText" placeholder="Search..." onkeyup="Search()">
         <table id="myTable" >
             <tr class="header">
-               <th>Name</th>
+               <th>Part</th>
                <th>Type</th>
                <th>Vendor</th>
             </tr>
@@ -67,10 +67,14 @@ const Search=()=>{
            let tr=myTable.getElementsByTagName('tr')
 
            for(i=0;i<tr.length;i++){
-               let tdName=tr[i].getElementsByTagName('td')[2];//tr[i ] gives the name while td[0] gives the name of the field
-               if(tdName){
-                   let txtvalue=tdName.textContent||td.innerHTML;//to store the value ina text
-                   if(txtvalue.toUpperCase().indexOf(MyText)>-1){
+               let tdName=tr[i].getElementsByTagName('td')[0];
+               let tdType=tr[i].getElementsByTagName('td')[1];
+               let tdVendor=tr[i].getElementsByTagName('td')[2];
+               if(tdName||tdType||tdVendor){
+                   let txtvalue=tdName.textContent||td.innerHTML;
+                   let txtvalue1=tdType.textContent||td.innerHTML;
+                   let txtvalue2=tdVendor.textContent||td.innerHTML;
+                   if(txtvalue.toUpperCase().indexOf(MyText)>-1||txtvalue1.toUpperCase().indexOf(MyText)>-1||txtvalue2.toUpperCase().indexOf(MyText)>-1){
 
                     tr[i].style.display="";
                    }else{
@@ -80,12 +84,7 @@ const Search=()=>{
            }
            
        }
-       /*1.refference of textbox ,teble,tr,td,td->textcontent 
-       2.for loop to iterate through the all content in table
-       3.tdname to get the table data
-       if tdname is there then textvalue is taken to save the only text of the the td
-       4.check wheather txtvakue is positive if yes then display it else none
-       */
+
     </script>
     </body>
     </html>
