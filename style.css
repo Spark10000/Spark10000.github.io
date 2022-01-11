@@ -7,7 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width:min-content;
+  max-width:fit-content;
   height: 50vh;
   font-size: 18px;
 }
@@ -16,7 +16,7 @@ table {
   width: 100%;
 }
 #MyText {
-  width:min-content;
+  width:fit-content;
   padding: 5px;
   margin-bottom: 1.5rem;
   font-size: 20px;
