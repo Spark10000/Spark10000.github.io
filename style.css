@@ -1,5 +1,5 @@
 * {
-  padding: 4px;
+  padding: 2px;
   margin: 0;
   box-sizing: content-box;
 
@@ -19,7 +19,7 @@ table {
 }
 #MyText {
   width:auto;
-  padding: 5px;
+  padding: 2px;
   margin-bottom: 1.5rem;
   font-size: 20px;
 }
@@ -51,7 +51,7 @@ tr {
 .tabcontent {
   color: black;
   display: none;
-  padding: 100px 20px;
+  padding: 60px 15px;
   height: 100%;
 }
 
