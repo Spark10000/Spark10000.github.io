@@ -26,6 +26,23 @@ const Search=()=>{
     
 }
 
+function openPage(pageName,elmnt,color){
+    let i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent")
+    for(i=0; i < tabcontent.length; i++){
+        tabcontent[i].style.display = "none";
+    }
+  
+    tablinks = document.getElementsByClassName("tablink");
+    for(i = 0; i < tablinks.length; i++){
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+  }
+  document.getElementById("defaultOpen").click();
+
+
 function importOnTable(){
     insert('78c4f343db9dd559abf1bf07', '36c90c6c7a6ac31045b8bcf3', 'b0c962281f8c3624f78966b7');
 }
