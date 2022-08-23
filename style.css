@@ -1,3 +1,4 @@
+
 * {
   padding: 2px;
   margin: 0;
@@ -27,12 +28,11 @@ tr {
   line-height: 2rem;
 }
 
-/*CSS for Tabs*/
 .header {
   background: rgb(255, 255, 255);
 }
 
-.tablink {
+.tblnk {
   background-color: #555;
   color: white;
   float: left;
@@ -44,11 +44,11 @@ tr {
   width: 25%;
 }
 
-.tablink:hover {
+.tblnk:hover {
   background-color: #777;
 }
 
-.tabcontent {
+.tbcon {
   color: black;
   display: none;
   padding: 60px 15px;

@@ -8,15 +8,16 @@ var queryObject = {};
   
   getDocuments = function(queryObject, cb) {
     var opts = {
-      path: '/api/documents/?nodeId=474a5b1d281c06c556b810b5/',
+      path: '/api/documents/',//?nodeId=474a5b1d281c06c556b810b5/'
       query: queryObject,
       headers: {
-        'Authorization': 'Bearer ' + request.accessToken //need to get a user accesstoken
+      'Authorization': 'Bearer ' + 'EISZOODI34HKXKFRQKBKFPWXOLSR5NBBGR2BIAQ=' //need to get a user accesstoken // request.AccessToken
       }
     }
     onshape.get(opts, cb);
   }
   getDocuments(queryObject, function (data) {
+    console.log(data);
     var docs = JSON.parse(data.toString()).items;  
     for (var i = 0; i < docs.length; i++) {
       var docID = docs[i].id;
@@ -25,8 +26,8 @@ var queryObject = {};
       //var ownerName = (docs[i].owner && ('name' in docs[i].owner)) ? docs[i].owner.name : 'nobody';
       //if(ownerName == 'FTC2901 Administrator' && privacy == 'public'){
       console.log(docID + '    ' + docs[i].name);
-      //}
-    }
+      }
+    //}
   });
 };
 

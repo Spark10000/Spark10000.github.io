@@ -12,15 +12,14 @@
     </head>
     <body>
       <! Buttons for top 3 tabs>
-      <button class="tablink" onclick="openPage('Library', this, 'purple')" id="defaultOpen"> Library</button>
-      <button class="tablink" onclick="openPage('Recent', this, 'purple')">Recent</button>
-      <button class="tablink" onclick="openPage('Favorites', this, 'purple')">Favorites</button>
+      <button class="tblnk" onclick="opnPg('Library', this, 'purple')" id="defaultOpen"> Library</button>
+      <button class="tblnk" onclick="opnPg('Recent', this, 'purple')">Recent</button>
+      <button class="tblnk" onclick="opnPg('Favorites', this, 'purple')">Favorites</button>
       <! Button for settings  Icon.>
-      <i class="material-icons" onclick="openPage('Settings', this, 'purple')">Settings</i>
+      <i class="material-icons" onclick="opnPg('Settings', this, 'purple')">Settings</i>
 
-
-      <div id="Library" class="tabcontent">
-        <input type="text" name="" id="MyText" placeholder="Search..." onkeyup="Search()">
+      <div id="Library" class="tbcon">
+        <input type="text" name="" id="MyText" placeholder="search here..." onkeyup="srch()">
         <table id="myTable" >
             <tr class="header">
                <th>Part</th>
@@ -29,7 +28,7 @@
             </tr>
 
                 <tr>
-                    <td>4in. HD Mecanum</td>
+                    <td><a href="https://cad.onshape.com/documents/4df245ce8a22329e92e51f51/w/ec4f425f3fbab3301e212e90/e/506259ecfceb9c2ce4eea5bd">4in. HD Mecanum</a></td>
                     <td>Wheels</td>
                     <td>AndyMark</td>
                 </tr>
@@ -39,74 +38,70 @@
                     <td>GoBuilda</td>
                 </tr>
                 <tr>
-                    <td>U-Channel (Configurable)</td>
+                    <td><a href="https://cad.onshape.com/documents/54bb753dd42f2510fe430206/w/fc4337e838c59de5d3ffe69e/e/a7382eb14b9132b2a6d20c44">U-Channel (Configurable)</a></td>
                     <td>Structure</td>
                     <td>Actobotics</td>
                 </tr>
                 <tr>
-                    <td>2m Distance Sensor</td>
+                    <td><a href="https://cad.onshape.com/documents/a6b3fb321e0e937cb75210fc/w/df7048dc3a557d10c00f1bc2/e/11e8c6d191c5cf90845ea889"> 2m Distance Sensor</a></td>
                     <td>Sensors</td>
                     <td>REV</td>
                 </tr>
         </table>
       </div>
 
-      <div id="Favorites" class="tabcontent">
+      <div id="Favorites" class="tbcon">
           <p> Favorited Files Will Appear Here </p>
       </div>
 
-      <div id="Recent" class="tabcontent">
+      <div id="Recent" class="tbcon">
         <p> Recently Opened Files Will Appear Here </p>
       </div>
 
-      <div id="Settings" class="tabcontent">
+      <div id="Settings" class="tbcon">
         <p> Settings Will Appear Here </p>
       </div>
 
     <script>
     
-      function openPage(pageName,elmnt,color){
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent")
-    for(i=0; i < tabcontent.length; i++){
-      tabcontent[i].style.display = "none";
+      function opnPg(pgName,elmnt,color){
+    var i, tbcon, tblnks;
+    tbcon = document.getElementsByClassName("tbcon")
+    for(i=0; i < tbcon.length; i++){
+      tbcon[i].style.display = "none";
     }
   
-    tablinks = document.getElementsByClassName("tablink");
-    for(i = 0; i < tablinks.length; i++){
-      tablinks[i].style.backgroundColor = "";
+    tblnks = document.getElementsByClassName("tblnk");
+    for(i = 0; i < tblnks.length; i++){
+      tblnks[i].style.backgroundColor = "";
     }
-    document.getElementById(pageName).style.display = "block";
+    document.getElementById(pgName).style.display = "block";
     elmnt.style.backgroundColor = color;
   }
   document.getElementById("defaultOpen").click();
   
-  const Search=()=>{
-             const MyText=document.getElementById('MyText').value.toUpperCase();
+  const srch=()=>{
+    const MyText=document.getElementById('MyText').value.toUpperCase();
   
-             let myTable=document.getElementById('myTable');
+    let myTable=document.getElementById('myTable');
+    let tr=myTable.getElementsByTagName('tr')
   
-             let tr=myTable.getElementsByTagName('tr')
-  
-             for(i=0;i<tr.length;i++){
-                 let tdName=tr[i].getElementsByTagName('td')[0];
-                 let tdType=tr[i].getElementsByTagName('td')[1];
-                 let tdVendor=tr[i].getElementsByTagName('td')[2];
-                 if(tdName||tdType||tdVendor){
-                     let txtvalue=tdName.textContent||td.innerHTML;
-                     let txtvalue1=tdType.textContent||td.innerHTML;
-                     let txtvalue2=tdVendor.textContent||td.innerHTML;
-                     if(txtvalue.toUpperCase().indexOf(MyText)>-1||txtvalue1.toUpperCase().indexOf(MyText)>-1||txtvalue2.toUpperCase().indexOf(MyText)>-1){
-  
-                      tr[i].style.display="";
-                     }else{
-                         tr[i].style.display="none"
-                     }
-                 }
-             }
-             
-         }
-  
+      for(i=0;i<tr.length;i++){
+        let tdName=tr[i].getElementsByTagName('td')[0];
+        let tdType=tr[i].getElementsByTagName('td')[1];
+        let tdVendor=tr[i].getElementsByTagName('td')[2];
+        if(tdName||tdType||tdVendor){
+          let txt1=tdName.textContent||td.innerHTML;
+          let txt2=tdType.textContent||td.innerHTML;
+          let txt3=tdVendor.textContent||td.innerHTML;
+          if(txt1.toUpperCase().indexOf(MyText)>-1||txt2.toUpperCase().indexOf(MyText)>-1||txt2.toUpperCase().indexOf(MyText)>-1){
+            tr[i].style.display="";
+            }else{
+            tr[i].style.display="none"
+            }
+          }
+        }    
+    }
     </script>
     </body>
     </html>
