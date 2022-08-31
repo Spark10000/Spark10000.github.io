@@ -1,6 +1,7 @@
 //Query all the docs in the parts library and add them to
 //Documents.json with Document ID, Image URL, Name, and Description
 
+const { pad } = require('crypto-js');
 var onshape = require('./Perif/onshape.js');
 var queryObject = {};
 
@@ -14,7 +15,7 @@ function sleep(milliseconds) {
 
   var getDocuments = function(queryObject, cb) {
     var opts = {
-      path: '/api/documents/'+'?nodeId=4e8628e24c7fb6ed3907920a&resourceType=folder',
+      path: 'cad.onshape.com/api/documents/475ba7e273e0d960254d2516',
       query: queryObject,
       headers: {
       'Authorization': 'Bearer ' + 'V5DYX5D746QX4JIXUXUXIFD7JOV4WVQ6PDNZGJOYNLO7AVF3D5CA====' //need to get a user accesstoken // request.AccessToken
@@ -24,7 +25,8 @@ function sleep(milliseconds) {
   }
 
     getDocuments(queryObject, function (data) {
-      console.log(data);
+      var docs = JSON.parse(data.toString());
+      console.log(docs.name);
     });
 
   /*getDocuments(queryObject, function (data) {
@@ -43,3 +45,5 @@ function sleep(milliseconds) {
       //}
       }
   });*/
+
+  //We have to recursively dig through each vendors folders
