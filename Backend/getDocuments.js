@@ -1,19 +1,32 @@
 //Query all the docs in the parts library and add them to
 //Documents.json with Document ID, Image URL, Name, and Description
-
+var u = require('url');
+var crypto = require('crypto');
 const { pad } = require('crypto-js');
 var onshape = require('./Perif/onshape.js');
+const { get } = require('http');
 var queryObject = {};
 
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
+
+function createSignature(method, url, nonce, authDate, contentType, accessKey, secretKey) {
+  var urlObj = u.parse(url);
+  var urlPath = urlObj.pathname;
+  var urlQuery = urlObj.query ? urlObj.query : ''; // if no query, use empty string
+
+  var str = (method + '\n' + nonce + '\n' + authDate + '\n' + contentType + '\n' +
+      urlPath + '\n' + urlQuery + '\n').toLowerCase();
+
+  var hmac = crypto.createHmac('sha256', secretKey)
+      .update(str)
+      .digest('base64');
+
+  var signature = 'On ' + accessKey + ':HmacSHA256:' + hmac;
+  return signature;
 }
 
-  var getDocuments = function(queryObject, cb) {
+createSignature()
+
+  function getDocuments(queryObject, cb) {
     var opts = {
       path: 'cad.onshape.com/api/documents/475ba7e273e0d960254d2516',
       query: queryObject,
