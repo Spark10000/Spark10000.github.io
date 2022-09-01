@@ -1,7 +1,7 @@
 var prod = {
 	'baseUrl': 'https://cad.onshape.com',
-	'accessKey': 'ZtDyw7UTmbzGAhTRTvmbBehi',
-	'secretKey': 'bumhC0Ryg4uwowTxYunfMHl91lpjeVFo8YkgksNj03y1WueG'
+	'accessKey': 'wnM4ezp41ZBDGFTTND9Thf5T',
+	'secretKey': 'yZ5VM9UvaHvNyArvdI619hvlLzMtyBHp46HEqMpH1ONBFuOB'
 };
 
 module.exports = prod;

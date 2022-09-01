@@ -18,24 +18,16 @@ var opts = {
 
 }
 
-var t = onshape.buildQueryString(opts);
-var c = onshape.inputHeadersFromOpts(opts);
-console.log(t);
-console.log(c);
+//var t = onshape.buildQueryString(opts);
+//var c = onshape.inputHeadersFromOpts(opts);
+//console.log(`t=%O`,t);
+//console.log(`c=%O`,c);
 
 
-var x = onshape.buildHeaders('GET', 'https://cad.onshape.com/api/documents/?nodeId=c85ccf54b805a8c256b69380&resourceType=folder',t, c);  //Problem with 'GET
-console.log(x);
+//var x = onshape.buildHeaders('GET', 'https://cad.onshape.com/api/documents/?nodeId=c85ccf54b805a8c256b69380&resourceType=folder',t, c);  //Problem with 'GET
+//console.log(`x=%O`, x);
 
-opts = {
-  path: '/api/documents/?nodeId=c85ccf54b805a8c256b69380&resourceType=folder', 
-  headers: {
-    Authorization: x.Authorization,
-    Accept: x.Accept
-  }
-}
 
-console.log(opts);
   function getDocuments(cb) {
     onshape.get(opts, cb);
   }
@@ -43,17 +35,8 @@ console.log(opts);
     getDocuments(function (data) {
       
       var docs = JSON.parse(data.toString()).items; 
-
-    for (var i = 0; i < docs.length; i++) {
-      //what ever the image url is 
-      //var privacy = docs[i].public ? 'public' : 'private';
-      //var ownerName = (docs[i].owner && ('name' in docs[i].owner)) ? docs[i].owner.name : 'nobody';
-      //if(ownerName == 'FTC2901 Administrator' && privacy == 'public'){
-      console.log(docs[i].id + '    ' + docs[i].name);
-     // if(i % 19 == 0){
-     //   sleep(61000);
-      //}
-      }
+      console.log(docs);
+      
     });
 
   /*getDocuments(queryObject, function (data) {

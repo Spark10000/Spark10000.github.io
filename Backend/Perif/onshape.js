@@ -131,6 +131,7 @@ module.exports = (function (creds) {
     var queryString = buildQueryString(opts);
     var inputHeaders = inputHeadersFromOpts(opts);
     var headers = buildHeaders('GET', path, queryString, inputHeaders);
+    console.log(`headers = %O`, headers)
     if (queryString !== '') queryString = '?' + queryString;
     var requestOpts = url.parse(baseUrl + path + queryString);
     requestOpts.method = 'GET';
