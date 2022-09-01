@@ -1,45 +1,59 @@
 //Query all the docs in the parts library and add them to
 //Documents.json with Document ID, Image URL, Name, and Description
-var u = require('url');
-var crypto = require('crypto');
-const { pad } = require('crypto-js');
+//var u = require('url');
+//var crypto = require('crypto');
+//const { pad } = require('crypto-js');
 var onshape = require('./Perif/onshape.js');
-const { get } = require('http');
-var queryObject = {};
+//const { get } = require('http');  IDEK
 
+//var queryParams = ['query', 'filter', 'owner', 'ownerType', 'sortColumn', 'sortOrder', 'offset', 'limit'];
+//var queryObject = {};
+//for (var i = 0; i < queryParams.length; i++) {
+//		queryObject[queryParams[i]] = queryParams[i];
+//}
+var opts = {
+    path: '/api/documents/?nodeId=c85ccf54b805a8c256b69380&resourceType=folder',
+    query: null,
+    headers: null
 
-function createSignature(method, url, nonce, authDate, contentType, accessKey, secretKey) {
-  var urlObj = u.parse(url);
-  var urlPath = urlObj.pathname;
-  var urlQuery = urlObj.query ? urlObj.query : ''; // if no query, use empty string
-
-  var str = (method + '\n' + nonce + '\n' + authDate + '\n' + contentType + '\n' +
-      urlPath + '\n' + urlQuery + '\n').toLowerCase();
-
-  var hmac = crypto.createHmac('sha256', secretKey)
-      .update(str)
-      .digest('base64');
-
-  var signature = 'On ' + accessKey + ':HmacSHA256:' + hmac;
-  return signature;
 }
 
-createSignature()
+var t = onshape.buildQueryString(opts);
+var c = onshape.inputHeadersFromOpts(opts);
+console.log(t);
+console.log(c);
 
-  function getDocuments(queryObject, cb) {
-    var opts = {
-      path: 'cad.onshape.com/api/documents/475ba7e273e0d960254d2516',
-      query: queryObject,
-      headers: {
-      'Authorization': 'Bearer ' + 'V5DYX5D746QX4JIXUXUXIFD7JOV4WVQ6PDNZGJOYNLO7AVF3D5CA====' //need to get a user accesstoken // request.AccessToken
-      }
-    }
+
+var x = onshape.buildHeaders('GET', 'https://cad.onshape.com/api/documents/?nodeId=c85ccf54b805a8c256b69380&resourceType=folder',t, c);  //Problem with 'GET
+console.log(x);
+
+opts = {
+  path: '/api/documents/?nodeId=c85ccf54b805a8c256b69380&resourceType=folder', 
+  headers: {
+    Authorization: x.Authorization,
+    Accept: x.Accept
+  }
+}
+
+console.log(opts);
+  function getDocuments(cb) {
     onshape.get(opts, cb);
   }
 
-    getDocuments(queryObject, function (data) {
-      var docs = JSON.parse(data.toString());
-      console.log(docs.name);
+    getDocuments(function (data) {
+      
+      var docs = JSON.parse(data.toString()).items; 
+
+    for (var i = 0; i < docs.length; i++) {
+      //what ever the image url is 
+      //var privacy = docs[i].public ? 'public' : 'private';
+      //var ownerName = (docs[i].owner && ('name' in docs[i].owner)) ? docs[i].owner.name : 'nobody';
+      //if(ownerName == 'FTC2901 Administrator' && privacy == 'public'){
+      console.log(docs[i].id + '    ' + docs[i].name);
+     // if(i % 19 == 0){
+     //   sleep(61000);
+      //}
+      }
     });
 
   /*getDocuments(queryObject, function (data) {
@@ -60,3 +74,5 @@ createSignature()
   });*/
 
   //We have to recursively dig through each vendors folders
+
+  

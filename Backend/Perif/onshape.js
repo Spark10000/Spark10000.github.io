@@ -367,6 +367,9 @@ module.exports = (function (creds) {
   };
 
   return {
+    buildQueryString: buildQueryString,
+    inputHeadersFromOpts: inputHeadersFromOpts,
+    buildHeaders: buildHeaders,
     get: get,
     post: post,
     delete: del,
