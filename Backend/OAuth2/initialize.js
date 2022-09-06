@@ -31,10 +31,7 @@ function createSignature(method, url, nonce, authDate, contentType, accessKey, s
     return signature;
 }
 
+//Url  used to retrieve Code for Oauth2
+//https://oauth.onshape.com/oauth/authorize?response_type=code&client_id=EISZOODI34HKXKFRQKBKFPWXOLSR5NBBGR2BIAQ=
 
-let client = new JSON({
-    providerID : "onShape",
-    client_id : "EISZOODI34HKXKFRQKBKFPWXOLSR5NBBGR2BIAQ=",
-    authorization :  ""
-})
 
