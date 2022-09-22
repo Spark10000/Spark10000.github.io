@@ -1,6 +1,15 @@
 // ...at top of file
 var u = require('url');
 var crypto = require('crypto');
+var 
+const http = require("http");
+
+const { brotliDecompressSync } = require('zlib');
+
+const http = require("http");
+const host = 'localhost';
+const port = 8000;
+
 
 /**
 * Generates the "Authorization" HTTP header for using the Onshape API
@@ -34,4 +43,21 @@ function createSignature(method, url, nonce, authDate, contentType, accessKey, s
 //Url  used to retrieve Code for Oauth2
 //https://oauth.onshape.com/oauth/authorize?response_type=code&client_id=EISZOODI34HKXKFRQKBKFPWXOLSR5NBBGR2BIAQ=
 
+//send request to onshape oauth and have user log in.
+//retrieve token and store it short term
+//send that token to https://oauth.onshape.com/oauth/token along with client ID and client secret
+
+fetch('https://oauth.onshape.com/oauth/token', {
+    method: 'POST',
+    headers:{
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+        'grant_type': 'authorization_code',
+        'code': ,
+        'client_id': 'EISZOODI34HKXKFRQKBKFPWXOLSR5NBBGR2BIAQ=',
+        'client_secret': '5SC3S6BJR7TJXQBHBKYOMUABPYSDHJCOWU5KVQPN7CB42QBIQBOQ===='
+    })
+
+})
 
