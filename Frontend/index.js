@@ -1,5 +1,6 @@
 var importData = require('Backend/insertParts.js');
 
+// Function for search bar to search through parts table.
 const Search=()=>{
     const MyText=document.getElementById('MyText').value.toUpperCase();
 
